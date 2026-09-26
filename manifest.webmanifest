@@ -1,25 +1,35 @@
 {
   "name": "ADM FCosta",
   "short_name": "ADM FCosta",
-  "description": "Atalhos para os sites da FCosta, da igreja e pessoais",
-  "start_url": "../adm_FCOSTA.html",
+  "start_url": "../index.html",
   "scope": "../",
   "display": "standalone",
-  "background_color": "#14284b",
+  "background_color": "#eef1f4",
   "theme_color": "#14284b",
-  "lang": "pt-BR",
   "icons": [
     {
       "src": "icone-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icone-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
