@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADM FCosta</title>
+<meta name="theme-color" content="#14284b">
+<meta name="apple-mobile-web-app-title" content="ADM FCosta">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icone.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #eef1f4;
+    --card: #ffffff;
+    --tinta: #14284b;
+    --suave: #5b6b85;
+    --linha: #d5dce6;
+    --destaque: #b8893a;
+    --foco: #1f6f6b;
+    --sobre-cor: #ffffff;
+    --corretor: #1f5fbf; --corretor-fundo: #dce8fa;
+    --igreja: #7b3fa0;   --igreja-fundo: #ebdff4;
+    --pessoal: #a8470f;  --pessoal-fundo: #fbe6d6;
+    --anuncios: #2a7d3f; --anuncios-fundo: #dcf1e2;
+    --redes: #c0264b;    --redes-fundo: #fbdde5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0e1a30;
+      --card: #16274a;
+      --tinta: #eef1f4;
+      --suave: #a3b2cc;
+      --linha: #2b3f68;
+      --destaque: #d9a955;
+      --foco: #5fc4bd;
+      --sobre-cor: #0e1a30;
+      --corretor: #6fa2f0; --corretor-fundo: #14315f;
+      --igreja: #c793e6;   --igreja-fundo: #2a1a44;
+      --pessoal: #f0a067;  --pessoal-fundo: #3b2314;
+      --anuncios: #6fcf8a; --anuncios-fundo: #123a22;
+      --redes: #f08aa3;    --redes-fundo: #3d1420;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 16px; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 64px;
+  }
+  header { margin-bottom: 40px; }
+  h1 {
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0 0 12px;
+  }
+  header p {
+    margin: 0;
+    color: var(--suave);
+    font-size: 1.05rem;
+    max-width: 44ch;
+  }
+  section {
+    margin-bottom: 28px;
+    padding: 20px;
+    background: var(--cor-fundo);
+    border-top: 6px solid var(--cor);
+    border-radius: 14px;
+  }
+  .corretor { --cor: var(--corretor); --cor-fundo: var(--corretor-fundo); }
+  .igreja   { --cor: var(--igreja);   --cor-fundo: var(--igreja-fundo); }
+  .pessoal  { --cor: var(--pessoal);  --cor-fundo: var(--pessoal-fundo); }
+  .anuncios { --cor: var(--anuncios); --cor-fundo: var(--anuncios-fundo); }
+  .redes    { --cor: var(--redes);    --cor-fundo: var(--redes-fundo); }
+  h2 {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 14px;
+    padding: 6px 16px;
+    background: var(--cor);
+    color: var(--sobre-cor);
+    border-radius: 999px;
+  }
+  .lista { display: grid; gap: 10px; }
+  .botao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--card);
+    border: 1px solid var(--linha);
+    border-left: 8px solid var(--cor);
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color .15s, transform .15s;
+  }
+  .botao:hover { border-color: var(--cor); transform: translateX(4px); }
+  .botao:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+  .nome { display: block; font-weight: 600; font-size: 1.1rem; }
+  .endereco {
+    display: block;
+    color: var(--suave);
+    font-size: .85rem;
+    overflow-wrap: anywhere;
+  }
+  .seta { flex: none; width: 22px; height: 22px; color: var(--cor); }
+  @media (prefers-reduced-motion: reduce) {
+    .botao { transition: none; }
+    .botao:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>ADM FCosta</h1>
+    <p>Escolha um site para abrir. Cada botão abre em uma nova aba.</p>
+  </header>
+
+  <section class="corretor">
+    <h2>FCosta Corretor</h2>
+    <div class="lista">
+      <a class="botao" href="http://fcostacorretor.com/" target="_blank" rel="noopener">
+        <span><span class="nome">Site FCosta Corretor</span><span class="endereco">fcostacorretor.com</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://corretoriaferramentas.lovable.app/dashboard" target="_blank" rel="noopener">
+        <span><span class="nome">Ferramentas do Corretor</span><span class="endereco">corretoriaferramentas.lovable.app/dashboard</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://serfico21-arch.github.io/PTAM_FCOSTA/" target="_blank" rel="noopener">
+        <span><span class="nome">PTAM FCosta</span><span class="endereco">serfico21-arch.github.io/PTAM_FCOSTA</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://serfico21-arch.github.io/Apostilas-creci/" target="_blank" rel="noopener">
+        <span><span class="nome">Apostilas CRECI</span><span class="endereco">serfico21-arch.github.io/Apostilas-creci</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://www.crecisp.gov.br/AreaRestrita/Servicos" target="_blank" rel="noopener">
+        <span><span class="nome">CRECI-SP área restrita</span><span class="endereco">crecisp.gov.br/AreaRestrita/Servicos</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://tv.crecisp.gov.br/home" target="_blank" rel="noopener">
+        <span><span class="nome">TV CRECI-SP</span><span class="endereco">tv.crecisp.gov.br/home</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://www.youtube.com/@crecisp" target="_blank" rel="noopener">
+        <span><span class="nome">YouTube CRECI-SP</span><span class="endereco">youtube.com/@crecisp</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://tijoloia.com.br/imoveis" target="_blank" rel="noopener">
+        <span><span class="nome">Tijolo FCosta</span><span class="endereco">tijoloia.com.br/imoveis</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="anuncios">
+    <h2>Sites para anúncios</h2>
+    <div class="lista">
+      <a class="botao" href="https://portalcreci.org.br/admin/Advertisement" target="_blank" rel="noopener">
+        <span><span class="nome">Portal CRECI anúncios</span><span class="endereco">portalcreci.org.br/admin/Advertisement</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://www.comprealugueagora.com.br/anuncio/novo" target="_blank" rel="noopener">
+        <span><span class="nome">Compre Alugue Agora novo anúncio</span><span class="endereco">comprealugueagora.com.br/anuncio/novo</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="redes">
+    <h2>Redes sociais</h2>
+    <div class="lista">
+      <a class="botao" href="https://www.instagram.com/f.costa_corretor/?__pwa=1" target="_blank" rel="noopener">
+        <span><span class="nome">Instagram</span><span class="endereco">instagram.com/f.costa_corretor</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://www.youtube.com/@fcostacorretor" target="_blank" rel="noopener">
+        <span><span class="nome">YouTube</span><span class="endereco">youtube.com/@fcostacorretor</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://www.tiktok.com/@fcosta.corretor" target="_blank" rel="noopener">
+        <span><span class="nome">TikTok</span><span class="endereco">tiktok.com/@fcosta.corretor</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://www.facebook.com/SergioCostaRCM/groups" target="_blank" rel="noopener">
+        <span><span class="nome">Facebook grupos</span><span class="endereco">facebook.com/SergioCostaRCM/groups</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="igreja">
+    <h2>Igreja</h2>
+    <div class="lista">
+      <a class="botao" href="https://obpcsaofernando199-sudo.github.io/Obpc/" target="_blank" rel="noopener">
+        <span><span class="nome">OBPC São Fernando</span><span class="endereco">obpcsaofernando199-sudo.github.io/Obpc</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="botao" href="https://serfico21-arch.github.io/ibbc/" target="_blank" rel="noopener">
+        <span><span class="nome">IBBC</span><span class="endereco">serfico21-arch.github.io/ibbc</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="pessoal">
+    <h2>Pessoal</h2>
+    <div class="lista">
+      <a class="botao" href="https://serfico21-arch.github.io/Pessoal/" target="_blank" rel="noopener">
+        <span><span class="nome">Painel Pessoal</span><span class="endereco">serfico21-arch.github.io/Pessoal</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+</main>
+</body>
+</html>
