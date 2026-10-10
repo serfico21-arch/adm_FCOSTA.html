@@ -78,11 +78,10 @@
     max-width: 44ch;
   }
   section {
-    margin-bottom: 28px;
-    padding: 20px;
+    margin-bottom: 24px;
+    padding: 18px;
     background: var(--cor-fundo);
-    border-top: 6px solid var(--cor);
-    border-radius: 14px;
+    border-radius: 22px;
   }
   .corretor { --cor: var(--corretor); --cor-fundo: var(--corretor-fundo); }
   .igreja   { --cor: var(--igreja);   --cor-fundo: var(--igreja-fundo); }
@@ -91,43 +90,86 @@
   .anuncios { --cor: var(--anuncios); --cor-fundo: var(--anuncios-fundo); }
   .redes    { --cor: var(--redes);    --cor-fundo: var(--redes-fundo); }
   h2 {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.05rem;
     font-weight: 800;
     margin: 0 0 14px;
-    padding: 6px 16px;
+    color: var(--cor);
+  }
+  h2::before {
+    content: "";
+    width: 12px; height: 12px;
+    border-radius: 50%;
     background: var(--cor);
-    color: var(--sobre-cor);
-    border-radius: 999px;
   }
   .lista { display: grid; gap: 10px; }
+  @media (min-width: 600px) {
+    .lista { grid-template-columns: 1fr 1fr; }
+    .lista > .botao:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  }
   .botao {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    padding: 18px 20px;
+    gap: 14px;
+    padding: 16px 18px;
     background: var(--card);
     border: 1px solid var(--linha);
-    border-left: 8px solid var(--cor);
-    border-radius: 10px;
+    border-radius: 14px;
+    box-shadow: 0 1px 0 var(--linha);
     color: inherit;
     text-decoration: none;
-    transition: border-color .15s, transform .15s;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
   }
-  .botao:hover { border-color: var(--cor); transform: translateX(4px); }
+  .botao:hover { border-color: var(--cor); transform: translateY(-2px); box-shadow: 0 6px 16px -8px var(--cor); }
   .botao:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
-  .nome { display: block; font-weight: 600; font-size: 1.1rem; }
+  .nome { display: block; font-weight: 600; font-size: 1.05rem; }
   .endereco {
     display: block;
     color: var(--suave);
-    font-size: .85rem;
+    font-size: .82rem;
     overflow-wrap: anywhere;
   }
   .seta { flex: none; width: 22px; height: 22px; color: var(--cor); }
+
+  /* Destaque: aba Pessoal, no topo e grande */
+  section.destaque {
+    background: var(--cor);
+    padding: 16px;
+    border-radius: 28px;
+    margin-bottom: 32px;
+  }
+  .destaque h2 { color: var(--sobre-cor); margin-bottom: 12px; }
+  .destaque h2::before { background: var(--sobre-cor); }
+  .destaque .lista { grid-template-columns: 1fr; }
+  .botao.grande {
+    min-height: 128px;
+    padding: 24px 24px;
+    gap: 18px;
+    border: 0;
+    border-radius: 20px;
+    justify-content: flex-start;
+  }
+  .botao.grande:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -14px #000; border-color: transparent; }
+  .botao.grande .texto { flex: 1; min-width: 0; }
+  .botao.grande .nome { font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 4px; }
+  .botao.grande .endereco { font-size: .9rem; }
+  .botao.grande .seta { width: 34px; height: 34px; }
+  .icone {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--cor-fundo);
+    color: var(--cor);
+  }
+  .icone svg { width: 32px; height: 32px; }
   @media (prefers-reduced-motion: reduce) {
     .botao { transition: none; }
-    .botao:hover { transform: none; }
+    .botao:hover, .botao.grande:hover { transform: none; }
   }
 </style>
 </head>
@@ -137,6 +179,17 @@
     <h1>ADM FCosta</h1>
     <p>Escolha um site para abrir. Cada botão abre em uma nova aba.</p>
   </header>
+
+  <section class="pessoal destaque">
+    <h2>Pessoal</h2>
+    <div class="lista">
+      <a class="botao grande" href="https://serfico21-arch.github.io/Pessoal/" target="_blank" rel="noopener">
+        <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+        <span class="texto"><span class="nome">Painel Pessoal</span><span class="endereco">serfico21-arch.github.io/Pessoal</span></span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
 
   <section class="corretor">
     <h2>FCosta Corretor</h2>
@@ -236,15 +289,6 @@
     </div>
   </section>
 
-  <section class="pessoal">
-    <h2>Pessoal</h2>
-    <div class="lista">
-      <a class="botao" href="https://serfico21-arch.github.io/Pessoal/" target="_blank" rel="noopener">
-        <span><span class="nome">Painel Pessoal</span><span class="endereco">serfico21-arch.github.io/Pessoal</span></span>
-        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-      </a>
-    </div>
-  </section>
 </main>
 </body>
 </html>
